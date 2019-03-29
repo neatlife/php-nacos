@@ -1,0 +1,32 @@
+{
+    "name": "alibaba/nacos",
+    "description": "阿里巴巴nacos配置中心php客户端",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "suxiaolin",
+            "email": "dear.lin@live.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "monolog/monolog": "^1.24",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "alibaba\\": "src/alibaba/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,6 @@
+tests/nacos/*
+
+composer.phar
+/vendor/
+
+.idea/
