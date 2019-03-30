@@ -2,7 +2,6 @@
 
 namespace tests\request;
 
-use alibaba\nacos\NacosConfig;
 use alibaba\nacos\request\config\GetConfigRequest;
 use tests\TestCase;
 

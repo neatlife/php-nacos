@@ -4,7 +4,6 @@ namespace tests\util;
 
 
 use alibaba\nacos\util\EncodeUtil;
-use alibaba\nacos\util\LogUtil;
 use tests\TestCase;
 
 /**

@@ -12,11 +12,11 @@ use alibaba\nacos\request\config\PublishConfigRequest;
 use alibaba\nacos\util\LogUtil;
 
 /**
- * Class Client
+ * Class NacosClient
  * @author suxiaolin
  * @package alibaba\nacos
  */
-class Client
+class NacosClient
 {
     /**
      * @param $dataId

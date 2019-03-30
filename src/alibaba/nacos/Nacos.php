@@ -28,13 +28,13 @@ class Nacos
 
     public function runOnce()
     {
-        Client::get(NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant());
+        NacosClient::get(NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant());
         return $this;
     }
 
     public function listener()
     {
-        Client::listener(NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant());
+        NacosClient::listener(NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant());
         return $this;
     }
 

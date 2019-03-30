@@ -8,15 +8,13 @@ use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\NacosConfig;
 use alibaba\nacos\util\HttpUtil;
-use alibaba\nacos\util\LogUtil;
-use alibaba\nacos\util\ReflectionUtil;
 
 /**
  * Class Request
  * @author suxiaolin
  * @package alibaba\nacos\request
  */
-class Request
+abstract class Request
 {
     /**
      * 接口地址
@@ -35,7 +33,7 @@ class Request
      *
      * @var array
      */
-    private $standaloneParameterList = ["uri", "verb"];
+    protected $standaloneParameterList = ["uri", "verb"];
 
     /**
      * 发起请求，做返回值异常检查
@@ -68,32 +66,7 @@ class Request
      * @return array
      * @throws \ReflectionException
      */
-    private function getParameterAndHeader()
-    {
-        $headers = [];
-        $parameterList = [];
-
-        $properties = ReflectionUtil::getProperties($this);
-        foreach ($properties as $propertyName => $propertyValue) {
-            if (in_array($propertyName, $this->standaloneParameterList)) {
-                // 忽略这些参数
-            } else if ($propertyName == "longPullingTimeout") {
-                $headers["Long-Pulling-Timeout"] = $this->getLongPullingTimeout();
-            } else if ($propertyName == "listeningConfigs") {
-                $parameterList["Listening-Configs"] = $this->getListeningConfigs();
-            } else {
-                $parameterList[$propertyName] = $propertyValue;
-            }
-        }
-
-        if (NacosConfig::getIsDebug()) {
-            LogUtil::info(strtr("parameterList: {parameterList}, headers: {headers}", [
-                "parameterList" => json_encode($parameterList),
-                "headers" => json_encode($headers)
-            ]));
-        }
-        return [$parameterList, $headers];
-    }
+    abstract protected function getParameterAndHeader();
 
     /**
      * @return mixed
@@ -134,4 +107,5 @@ class Request
     {
         $this->uri = $uri;
     }
+
 }
