@@ -6,14 +6,25 @@ namespace alibaba\nacos\request\config;
 use alibaba\nacos\failover\LocalConfigInfoProcessor;
 use alibaba\nacos\Nacos;
 use alibaba\nacos\NacosConfig;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class NacosTest
  * @author suxiaolin
  * @package alibaba\nacos\request\config
  */
-class NacosTest extends \PHPUnit\Framework\TestCase
+class NacosTest extends TestCase
 {
+    /**
+     * This method is called before each test.
+     */
+    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
+    {
+        NacosConfig::setIsDebug(true);
+        // 长轮询10秒一次
+        NacosConfig::setLongPullingTimeout(10000);
+    }
+
     public function testRunOnce()
     {
         Nacos::init(
@@ -42,15 +53,5 @@ class NacosTest extends \PHPUnit\Framework\TestCase
             "DEFAULT_GROUP",
             ""
         )->listener();
-    }
-
-    /**
-     * This method is called before each test.
-     */
-    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
-    {
-        NacosConfig::setIsDebug(true);
-        // 长轮询10秒一次
-        NacosConfig::setLongPullingTimeout(10000);
     }
 }

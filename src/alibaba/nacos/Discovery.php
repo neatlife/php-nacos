@@ -5,6 +5,7 @@ namespace alibaba\nacos;
 
 
 use alibaba\nacos\model\Instance;
+use ReflectionException;
 
 /**
  * Class Discovery
@@ -41,7 +42,7 @@ class Discovery
      * @param string $clusterName
      * @param string $metadata
      * @return bool
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
@@ -68,7 +69,7 @@ class Discovery
      * @param string $namespaceId
      * @param string $clusterName
      * @return bool
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
@@ -90,7 +91,7 @@ class Discovery
      * @param string $clusterName
      * @param string $metadata
      * @return bool
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
@@ -113,7 +114,7 @@ class Discovery
      * @param string $namespaceId
      * @param string $clusters
      * @return model\InstanceList
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
@@ -134,7 +135,7 @@ class Discovery
      * @param string $namespaceId
      * @param string $clusters
      * @return model\Instance
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
@@ -155,7 +156,7 @@ class Discovery
     /**
      * @param Instance $instance
      * @return model\Beat
-     * @throws \ReflectionException
+     * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException

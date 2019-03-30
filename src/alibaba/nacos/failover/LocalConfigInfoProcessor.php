@@ -5,21 +5,21 @@ namespace alibaba\nacos\failover;
 
 
 use alibaba\nacos\NacosConfig;
-use alibaba\nacos\util\FileUtil;
+use SplFileInfo;
 
 /**
  * Class LocalConfigInfoProcessor
  * @author suxiaolin
  * @package alibaba\nacos\failover
  */
-class LocalConfigInfoProcessor
+class LocalConfigInfoProcessor extends Processor
 {
     const DS = DIRECTORY_SEPARATOR;
 
     public static function getFailover($serverName, $dataId, $group, $tenant)
     {
         $failoverFile = self::getFailoverFile($serverName, $dataId, $group, $tenant);
-        if (is_file($failoverFile)) {
+        if (!is_file($failoverFile)) {
             return null;
         }
         return file_get_contents($failoverFile);
@@ -65,26 +65,12 @@ class LocalConfigInfoProcessor
         if (!$config) {
             unlink($snapshotFile);
         } else {
-            $file = new \SplFileInfo($snapshotFile);
+            $file = new SplFileInfo($snapshotFile);
             if (!is_dir($file->getPath())) {
                 mkdir($file->getPath(), 0777, true);
             }
             file_put_contents($snapshotFile, $config);
         }
-    }
-
-    /**
-     * 清除snapshot目录下所有缓存文件。
-     */
-    public static function cleanAllSnapshot()
-    {
-        FileUtil::deleteAll(NacosConfig::getSnapshotPath());
-    }
-
-    public static function cleanEnvSnapshot($envName)
-    {
-        $envSnapshotPath = NacosConfig::getSnapshotPath() . self::DS . $envName . "_nacos" . self::DS;
-        FileUtil::deleteAll($envSnapshotPath);
     }
 
 }

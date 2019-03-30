@@ -2,18 +2,22 @@
 
 namespace tests\request\discovery;
 
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
+use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\model\Instance;
 use alibaba\nacos\request\discovery\GetInstanceDiscovery;
+use ReflectionException;
 use tests\TestCase;
 
 class GetInstanceDiscoveryTest extends TestCase
 {
 
     /**
-     * @throws \ReflectionException
-     * @throws \alibaba\nacos\exception\RequestUriRequiredException
-     * @throws \alibaba\nacos\exception\RequestVerbRequiredException
-     * @throws \alibaba\nacos\exception\ResponseCodeErrorException
+     * @throws ReflectionException
+     * @throws RequestUriRequiredException
+     * @throws RequestVerbRequiredException
+     * @throws ResponseCodeErrorException
      */
     public function testDoRequest()
     {

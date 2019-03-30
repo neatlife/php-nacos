@@ -13,7 +13,7 @@ abstract class Model
 {
     /**
      * @param $instanceJson
-     * @return Model
+     * @return Model | Instance | InstanceList | Beat | Host
      */
     public static function decode($instanceJson)
     {

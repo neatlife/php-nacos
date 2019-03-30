@@ -4,6 +4,7 @@ namespace tests\util;
 
 
 use alibaba\nacos\util\LogUtil;
+use Exception;
 use tests\TestCase;
 
 /**
@@ -14,7 +15,7 @@ use tests\TestCase;
 class LogUtilTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function testInfo()
     {

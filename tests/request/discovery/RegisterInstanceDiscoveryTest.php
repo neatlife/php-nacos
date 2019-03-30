@@ -2,22 +2,26 @@
 
 namespace tests\request\discovery;
 
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
+use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\request\discovery\RegisterInstanceDiscovery;
+use ReflectionException;
 use tests\TestCase;
 
 class RegisterInstanceDiscoveryTest extends TestCase
 {
 
     /**
-     * @throws \ReflectionException
-     * @throws \alibaba\nacos\exception\RequestUriRequiredException
-     * @throws \alibaba\nacos\exception\RequestVerbRequiredException
-     * @throws \alibaba\nacos\exception\ResponseCodeErrorException
+     * @throws ReflectionException
+     * @throws RequestUriRequiredException
+     * @throws RequestVerbRequiredException
+     * @throws ResponseCodeErrorException
      */
     public function testDoRequest()
     {
         $registerInstanceDiscovery = new RegisterInstanceDiscovery();
-        $registerInstanceDiscovery->setIp("11.11.11.12");
+        $registerInstanceDiscovery->setIp("11.11.11.11");
         $registerInstanceDiscovery->setPort("8848");
         $registerInstanceDiscovery->setNamespaceId("");
         $registerInstanceDiscovery->setWeight(1.0);

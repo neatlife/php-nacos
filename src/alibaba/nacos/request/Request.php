@@ -8,6 +8,8 @@ use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\NacosConfig;
 use alibaba\nacos\util\HttpUtil;
+use Psr\Http\Message\ResponseInterface;
+use ReflectionException;
 
 /**
  * Class Request
@@ -38,11 +40,11 @@ abstract class Request
     /**
      * 发起请求，做返回值异常检查
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return mixed|ResponseInterface
      * @throws RequestUriRequiredException
      * @throws RequestVerbRequiredException
      * @throws ResponseCodeErrorException
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function doRequest()
     {
@@ -64,7 +66,7 @@ abstract class Request
     /**
      * 获取请求参数和请求头
      * @return array
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     abstract protected function getParameterAndHeader();
 

@@ -34,7 +34,7 @@ $instanceList = $discovery->listInstances();
 
 ## 查询实例详情
 ```php
-$this->assertInstanceOf(Instance::class, $discovery->get();
+$instance = $discovery->get();
 ```
 
 ## 发送实例心跳

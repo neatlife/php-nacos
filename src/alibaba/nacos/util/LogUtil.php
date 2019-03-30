@@ -4,6 +4,7 @@
 namespace alibaba\nacos\util;
 
 use alibaba\nacos\NacosConfig;
+use Exception;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
@@ -31,7 +32,7 @@ class LogUtil
             try {
                 $log = new Logger(NacosConfig::getName());
                 $log->pushHandler(new StreamHandler(NacosConfig::getLogPath(), NacosConfig::getLogLevel()));
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 echo "初始化日志系统失败";
                 exit(255);
             }

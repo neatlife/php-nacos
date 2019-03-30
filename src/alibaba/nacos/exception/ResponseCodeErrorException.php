@@ -2,12 +2,14 @@
 
 namespace alibaba\nacos\exception;
 
+use Exception;
+
 /**
  * Class ResponseCodeErrorException
  * @author suxiaolin
  * @package alibaba\nacos\exception
  */
-class ResponseCodeErrorException extends \Exception
+class ResponseCodeErrorException extends Exception
 {
     /**
      * ResponseCodeErrorException constructor.

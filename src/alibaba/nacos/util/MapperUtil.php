@@ -4,6 +4,7 @@
 namespace alibaba\nacos\util;
 
 
+use ReflectionException;
 use ReflectionObject;
 
 class MapperUtil
@@ -12,7 +13,7 @@ class MapperUtil
      * @param $instance
      * @param $className
      * @return mixed
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public static function objectToObject($instance, $className)
     {
