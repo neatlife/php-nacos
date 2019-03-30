@@ -20,12 +20,12 @@ class PublishConfigRequestTest extends TestCase
      */
     public function testDoRequest()
     {
-        $publishConfigsConfigRequest = new PublishConfigsConfigRequest();
-        $publishConfigsConfigRequest->setDataId("LARAVEL1");
-        $publishConfigsConfigRequest->setGroup("DEFAULT_GROUP");
-        $publishConfigsConfigRequest->setContent(file_get_contents("env-example"));
+        $publishConfigRequest = new PublishConfigRequest();
+        $publishConfigRequest->setDataId("LARAVEL1");
+        $publishConfigRequest->setGroup("DEFAULT_GROUP");
+        $publishConfigRequest->setContent(file_get_contents("env-example"));
 
-        $response = $publishConfigsConfigRequest->doRequest();
+        $response = $publishConfigRequest->doRequest();
         $this->assertNotEmpty($response);
         $this->assertNotEmpty($response->getBody());
         $content = $response->getBody()->getContents();

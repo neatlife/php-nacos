@@ -20,11 +20,11 @@ class DeleteConfigRequestTest extends TestCase
      */
     public function testDoRequest()
     {
-        $deleteConfigsConfigRequest = new DeleteConfigsConfigRequest();
-        $deleteConfigsConfigRequest->setDataId("LARAVEL1");
-        $deleteConfigsConfigRequest->setGroup("DEFAULT_GROUP");
+        $deleteConfigRequest = new DeleteConfigRequest();
+        $deleteConfigRequest->setDataId("LARAVEL1");
+        $deleteConfigRequest->setGroup("DEFAULT_GROUP");
 
-        $response = $deleteConfigsConfigRequest->doRequest();
+        $response = $deleteConfigRequest->doRequest();
         $this->assertNotEmpty($response);
         $this->assertNotEmpty($response->getBody());
         $content = $response->getBody()->getContents();

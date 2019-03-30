@@ -3,12 +3,13 @@
 namespace alibaba\nacos\request\config;
 
 /**
- * Class DeleteConfigsConfigRequest
+ * Class GetConfigRequest
  * @author suxiaolin
  * @package alibaba\nacos\request\config
  */
-class DeleteConfigsConfigRequest extends ConfigRequest
+class GetConfigRequest extends ConfigRequest
 {
     protected $uri = "/nacos/v1/cs/configs";
-    protected $verb = "DELETE";
+    protected $verb = "GET";
+
 }

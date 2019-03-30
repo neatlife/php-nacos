@@ -5,10 +5,10 @@ namespace alibaba\nacos;
 
 
 use alibaba\nacos\failover\LocalConfigInfoProcessor;
-use alibaba\nacos\request\config\DeleteConfigsConfigRequest;
-use alibaba\nacos\request\config\GetConfigsConfigRequest;
+use alibaba\nacos\request\config\DeleteConfigRequest;
+use alibaba\nacos\request\config\GetConfigRequest;
 use alibaba\nacos\request\config\ListenerConfigRequest;
-use alibaba\nacos\request\config\PublishConfigsConfigRequest;
+use alibaba\nacos\request\config\PublishConfigRequest;
 use alibaba\nacos\util\LogUtil;
 
 /**
@@ -18,26 +18,6 @@ use alibaba\nacos\util\LogUtil;
  */
 class Client
 {
-    public static function get($env, $dataId, $group, $tenant)
-    {
-        $getConfigsConfigRequest = new GetConfigsConfigRequest();
-        $getConfigsConfigRequest->setDataId($dataId);
-        $getConfigsConfigRequest->setGroup($group);
-
-        try {
-            $response = $getConfigsConfigRequest->doRequest();
-            $config = $response->getBody()->getContents();
-            LocalConfigInfoProcessor::saveSnapshot($env, $dataId, $group, $tenant, $config);
-        } catch (\Exception $e) {
-            LogUtil::error("拉去服务器配置异常，开始从本地获取配置, message: " . $e->getMessage());
-            $config = LocalConfigInfoProcessor::getFailover($env, $dataId, $group, $tenant);
-            $config = $config ? $config
-                : LocalConfigInfoProcessor::getSnapshot($env, $dataId, $group, $tenant);
-        }
-
-        return $config;
-    }
-
     /**
      * @param $dataId
      * @param $group
@@ -50,12 +30,12 @@ class Client
      */
     public static function delete($dataId, $group, $tenant)
     {
-        $deleteConfigsConfigRequest = new DeleteConfigsConfigRequest();
-        $deleteConfigsConfigRequest->setDataId($dataId);
-        $deleteConfigsConfigRequest->setGroup($group);
-        $deleteConfigsConfigRequest->setTenant($tenant);
+        $deleteConfigRequest = new DeleteConfigRequest();
+        $deleteConfigRequest->setDataId($dataId);
+        $deleteConfigRequest->setGroup($group);
+        $deleteConfigRequest->setTenant($tenant);
 
-        $response = $deleteConfigsConfigRequest->doRequest();
+        $response = $deleteConfigRequest->doRequest();
         return $response->getBody()->getContents() == "true";
     }
 
@@ -68,14 +48,14 @@ class Client
      */
     public static function publish($dataId, $group, $content, $tenant = "")
     {
-        $publishConfigsConfigRequest = new PublishConfigsConfigRequest();
-        $publishConfigsConfigRequest->setDataId($dataId);
-        $publishConfigsConfigRequest->setGroup($group);
-        $publishConfigsConfigRequest->setTenant($tenant);
-        $publishConfigsConfigRequest->setContent($content);
+        $publishConfigRequest = new PublishConfigRequest();
+        $publishConfigRequest->setDataId($dataId);
+        $publishConfigRequest->setGroup($group);
+        $publishConfigRequest->setTenant($tenant);
+        $publishConfigRequest->setContent($content);
 
         try {
-            $response = $publishConfigsConfigRequest->doRequest();
+            $response = $publishConfigRequest->doRequest();
         } catch (\Exception $e) {
             return false;
         }
@@ -86,7 +66,7 @@ class Client
     {
         $loop = 0;
         do {
-            $loop ++;
+            $loop++;
 
             $listenerConfigRequest = new ListenerConfigRequest();
             $listenerConfigRequest->setDataId($dataId);
@@ -112,5 +92,25 @@ class Client
             }
             LogUtil::info("listener loop count: " . $loop);
         } while (true);
+    }
+
+    public static function get($env, $dataId, $group, $tenant)
+    {
+        $getConfigRequest = new GetConfigRequest();
+        $getConfigRequest->setDataId($dataId);
+        $getConfigRequest->setGroup($group);
+
+        try {
+            $response = $getConfigRequest->doRequest();
+            $config = $response->getBody()->getContents();
+            LocalConfigInfoProcessor::saveSnapshot($env, $dataId, $group, $tenant, $config);
+        } catch (\Exception $e) {
+            LogUtil::error("拉去服务器配置异常，开始从本地获取配置, message: " . $e->getMessage());
+            $config = LocalConfigInfoProcessor::getFailover($env, $dataId, $group, $tenant);
+            $config = $config ? $config
+                : LocalConfigInfoProcessor::getSnapshot($env, $dataId, $group, $tenant);
+        }
+
+        return $config;
     }
 }

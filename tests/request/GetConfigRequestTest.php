@@ -3,15 +3,15 @@
 namespace tests\request;
 
 use alibaba\nacos\NacosConfig;
-use alibaba\nacos\request\config\GetConfigsConfigRequest;
+use alibaba\nacos\request\config\GetConfigRequest;
 use tests\TestCase;
 
 /**
- * Class GetConfigsConfigRequestTest
+ * Class GetConfigRequestTest
  * @author suxiaolin
  * @package tests\request
  */
-class GetConfigsConfigRequestTest extends TestCase
+class GetConfigRequestTest extends TestCase
 {
     /**
      * @throws \ReflectionException
@@ -21,11 +21,11 @@ class GetConfigsConfigRequestTest extends TestCase
      */
     public function testDoRequest()
     {
-        $getConfigsConfigRequest = new GetConfigsConfigRequest();
-        $getConfigsConfigRequest->setDataId("LARAVEL");
-        $getConfigsConfigRequest->setGroup("DEFAULT_GROUP");
+        $getConfigRequest = new GetConfigRequest();
+        $getConfigRequest->setDataId("LARAVEL");
+        $getConfigRequest->setGroup("DEFAULT_GROUP");
 
-        $response = $getConfigsConfigRequest->doRequest();
+        $response = $getConfigRequest->doRequest();
         $this->assertNotEmpty($response);
         $this->assertNotEmpty($response->getBody());
         $content = $response->getBody()->getContents();
