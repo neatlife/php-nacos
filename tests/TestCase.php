@@ -19,6 +19,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
     {
         NacosConfig::setHost("http://127.0.0.1:8848/");
-        NacosConfig::setIsDebug(false);
+        NacosConfig::setIsDebug(true);
     }
 }

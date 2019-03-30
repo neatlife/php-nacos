@@ -14,16 +14,6 @@ use alibaba\nacos\NacosConfig;
  */
 class NacosTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * This method is called before each test.
-     */
-    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
-    {
-        NacosConfig::setIsDebug(true);
-        // 长轮询10秒一次
-        NacosConfig::setLongPullingTimeout(10000);
-    }
-
     public function testRunOnce()
     {
         Nacos::init(
@@ -43,7 +33,8 @@ class NacosTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testListener() {
+    public function testListener()
+    {
         Nacos::init(
             "http://127.0.0.1:8848/",
             "dev",
@@ -51,5 +42,15 @@ class NacosTest extends \PHPUnit\Framework\TestCase
             "DEFAULT_GROUP",
             ""
         )->listener();
+    }
+
+    /**
+     * This method is called before each test.
+     */
+    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
+    {
+        NacosConfig::setIsDebug(true);
+        // 长轮询10秒一次
+        NacosConfig::setLongPullingTimeout(10000);
     }
 }
