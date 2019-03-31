@@ -59,3 +59,17 @@ Nacos::init(
     ""
 )->listener();
 ```
+
+## 配置兜底方案
+
+将兜底的配置文件放入下面的路径里
+
+如果有给$tenant设置值，文件路径这样计算
+
+工作目录/nacos/config/{$env}_nacos/config-data-{$tenant}/{$dataId}
+
+否则
+
+工作目录/nacos/config/{$env}_nacos/config-data/{$dataId}
+
+nacos会在无法从配置中心查询配置文件时将读取上面的配置文件
