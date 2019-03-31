@@ -28,8 +28,7 @@ class Nacos
 
     public function runOnce()
     {
-        NacosClient::get(NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant());
-        return $this;
+        return NacosClient::get(NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant());
     }
 
     public function listener()
