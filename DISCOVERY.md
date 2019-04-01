@@ -42,3 +42,14 @@ $instance = $discovery->get();
 ```php
 $beat = $discovery->beat();
 ```
+
+定时5秒发送一次心跳
+
+```bash
+#!/bin/bash
+
+while true; do
+  php path/to/beat.php
+  sleep 5;
+done
+```
