@@ -36,17 +36,17 @@ class ListenerConfigRequest extends ConfigRequest
     /**
      * @var int 长轮询等待时间, 默认30秒
      */
-    private $longPullingTimeout = 30000;
+    private $longPullingTimeout;
 
     /**
      * @return int
      */
     public function getLongPullingTimeout()
     {
-        if (NacosConfig::getLongPullingTimeout()) {
-            return NacosConfig::getLongPullingTimeout();
-        } else {
+        if ($this->longPullingTimeout) {
             return $this->longPullingTimeout;
+        } else {
+            return NacosConfig::getLongPullingTimeout();
         }
     }
 
