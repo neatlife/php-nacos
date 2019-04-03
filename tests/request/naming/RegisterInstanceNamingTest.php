@@ -1,15 +1,15 @@
 <?php
 
-namespace tests\request\discovery;
+namespace tests\request\naming;
 
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
-use alibaba\nacos\request\discovery\RegisterInstanceDiscovery;
+use alibaba\nacos\request\naming\RegisterInstanceNaming;
 use ReflectionException;
 use tests\TestCase;
 
-class RegisterInstanceDiscoveryTest extends TestCase
+class RegisterInstanceNamingTest extends TestCase
 {
 
     /**
@@ -20,7 +20,7 @@ class RegisterInstanceDiscoveryTest extends TestCase
      */
     public function testDoRequest()
     {
-        $registerInstanceDiscovery = new RegisterInstanceDiscovery();
+        $registerInstanceDiscovery = new RegisterInstanceNaming();
         $registerInstanceDiscovery->setIp("11.11.11.11");
         $registerInstanceDiscovery->setPort("8848");
         $registerInstanceDiscovery->setNamespaceId("");

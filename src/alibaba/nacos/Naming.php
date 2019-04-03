@@ -8,10 +8,10 @@ use alibaba\nacos\model\Instance;
 use ReflectionException;
 
 /**
- * Class Discovery
+ * Class Naming
  * @package alibaba\nacos
  */
-class Discovery
+class Naming
 {
     /**
      * @param $serviceName
@@ -19,17 +19,17 @@ class Discovery
      * @param $port
      * @param string $namespaceId
      * @param string $weight
-     * @return Discovery
+     * @return Naming
      */
     public static function init($serviceName, $ip, $port, $namespaceId = "", $weight = "")
     {
         static $client;
         if ($client == null) {
-            DiscoveryConfig::setServiceName($serviceName);
-            DiscoveryConfig::setIp($ip);
-            DiscoveryConfig::setPort($port);
-            DiscoveryConfig::setNamespaceId($namespaceId);
-            DiscoveryConfig::setWeight($weight);
+            NamingConfig::setServiceName($serviceName);
+            NamingConfig::setIp($ip);
+            NamingConfig::setPort($port);
+            NamingConfig::setNamespaceId($namespaceId);
+            NamingConfig::setWeight($weight);
 
             $client = new self();
         }
@@ -49,12 +49,12 @@ class Discovery
      */
     public function register($enable = true, $healthy = true, $clusterName = "", $metadata = "{}")
     {
-        return DiscoveryClient::register(
-            DiscoveryConfig::getServiceName(),
-            DiscoveryConfig::getIp(),
-            DiscoveryConfig::getPort(),
-            DiscoveryConfig::getWeight(),
-            DiscoveryConfig::getNamespaceId(),
+        return NamingClient::register(
+            NamingConfig::getServiceName(),
+            NamingConfig::getIp(),
+            NamingConfig::getPort(),
+            NamingConfig::getWeight(),
+            NamingConfig::getNamespaceId(),
             $enable,
             $healthy,
             $clusterName,
@@ -76,10 +76,10 @@ class Discovery
      */
     public function delete($namespaceId = "", $clusterName = "")
     {
-        return DiscoveryClient::delete(
-            DiscoveryConfig::getServiceName(),
-            DiscoveryConfig::getIp(),
-            DiscoveryConfig::getPort(),
+        return NamingClient::delete(
+            NamingConfig::getServiceName(),
+            NamingConfig::getIp(),
+            NamingConfig::getPort(),
             $namespaceId,
             $clusterName
         );
@@ -98,10 +98,10 @@ class Discovery
      */
     public function update($weight = "", $namespaceId = "", $clusterName = "", $metadata = "{}")
     {
-        return DiscoveryClient::update(
-            DiscoveryConfig::getServiceName(),
-            DiscoveryConfig::getIp(),
-            DiscoveryConfig::getPort(),
+        return NamingClient::update(
+            NamingConfig::getServiceName(),
+            NamingConfig::getIp(),
+            NamingConfig::getPort(),
             $weight,
             $namespaceId,
             $clusterName,
@@ -121,8 +121,8 @@ class Discovery
      */
     public function listInstances($healthyOnly = false, $namespaceId = "", $clusters = "")
     {
-        return DiscoveryClient::listInstances(
-            DiscoveryConfig::getServiceName(),
+        return NamingClient::listInstances(
+            NamingConfig::getServiceName(),
             $healthyOnly,
             $namespaceId,
             $clusters
@@ -142,10 +142,10 @@ class Discovery
      */
     public function get($healthyOnly = false, $weight = "", $namespaceId = "", $clusters = "")
     {
-        return DiscoveryClient::get(
-            DiscoveryConfig::getServiceName(),
-            DiscoveryConfig::getIp(),
-            DiscoveryConfig::getPort(),
+        return NamingClient::get(
+            NamingConfig::getServiceName(),
+            NamingConfig::getIp(),
+            NamingConfig::getPort(),
             $healthyOnly,
             $weight,
             $namespaceId,
@@ -166,8 +166,8 @@ class Discovery
         if ($instance == null) {
             $instance = $this->get();
         }
-        return DiscoveryClient::beat(
-            DiscoveryConfig::getServiceName(),
+        return NamingClient::beat(
+            NamingConfig::getServiceName(),
             $instance->encode()
         );
     }

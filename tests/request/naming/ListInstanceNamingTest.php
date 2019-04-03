@@ -1,12 +1,12 @@
 <?php
 
-namespace tests\request\discovery;
+namespace tests\request\naming;
 
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\model\InstanceList;
-use alibaba\nacos\request\discovery\ListInstanceDiscovery;
+use alibaba\nacos\request\naming\ListInstanceNaming;
 use ReflectionException;
 use tests\TestCase;
 
@@ -21,7 +21,7 @@ class RegisterInstanceDiscoveryTest extends TestCase
      */
     public function testDoRequest()
     {
-        $listInstanceDiscovery = new ListInstanceDiscovery();
+        $listInstanceDiscovery = new ListInstanceNaming();
         $listInstanceDiscovery->setServiceName("nacos.test.1");
         $listInstanceDiscovery->setNamespaceId("");
         $listInstanceDiscovery->setClusters("");

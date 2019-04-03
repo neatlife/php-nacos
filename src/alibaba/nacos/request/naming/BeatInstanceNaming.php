@@ -1,8 +1,8 @@
 <?php
 
-namespace alibaba\nacos\request\discovery;
+namespace alibaba\nacos\request\naming;
 
-class BeatInstanceDiscovery extends DiscoveryRequest
+class BeatInstanceNaming extends NamingRequest
 {
     protected $uri = "/nacos/v1/ns/instance/beat";
     protected $verb = "PUT";

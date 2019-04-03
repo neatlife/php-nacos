@@ -1,18 +1,16 @@
 <?php
 
-namespace tests\request\discovery;
+namespace tests\request\naming;
 
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
-use alibaba\nacos\request\discovery\BeatInstanceDiscovery;
+use alibaba\nacos\request\naming\DeleteInstanceNaming;
 use ReflectionException;
 use tests\TestCase;
 
-class BeatInstanceDiscoveryTest extends TestCase
+class DeleteInstanceNamingTest extends TestCase
 {
-
-    private $beat = '{"metadata":{},"instanceId":"11.11.11.11#8848#DEFAULT#nacos.test.1","port":8848,"service":"nacos.test.1","healthy":true,"ip":"11.11.11.11","clusterName":"DEFAULT","weight":1.0}';
 
     /**
      * @throws ReflectionException
@@ -22,16 +20,19 @@ class BeatInstanceDiscoveryTest extends TestCase
      */
     public function testDoRequest()
     {
-        $beatInstanceDiscovery = new BeatInstanceDiscovery();
-        $beatInstanceDiscovery->setServiceName("nacos.test.1");
-        $beatInstanceDiscovery->setBeat($this->beat);
+        $deleteInstanceDiscovery = new DeleteInstanceNaming();
+        $deleteInstanceDiscovery->setIp("11.11.11.12");
+        $deleteInstanceDiscovery->setPort("8848");
+        $deleteInstanceDiscovery->setNamespaceId("");
+        $deleteInstanceDiscovery->setClusterName("");
+        $deleteInstanceDiscovery->setServiceName("nacos.test.1");
 
-        $response = $beatInstanceDiscovery->doRequest();
+        $response = $deleteInstanceDiscovery->doRequest();
         $this->assertNotEmpty($response);
         $this->assertNotEmpty($response->getBody());
         $content = $response->getBody()->getContents();
         echo "content: " . $content;
         $this->assertNotEmpty($content);
-        $this->assertTrue($content == '{"clientBeatInterval":5000}');
+        $this->assertTrue($content == "ok");
     }
 }

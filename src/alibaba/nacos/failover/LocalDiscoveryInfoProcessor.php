@@ -28,7 +28,7 @@ class LocalDiscoveryInfoProcessor extends Processor
 
     public static function getFailoverFile($serviceName, $ip, $port, $cluster)
     {
-        $failoverFile = NacosConfig::getSnapshotPath() . self::DS . "discovery-data"
+        $failoverFile = NacosConfig::getSnapshotPath() . self::DS . "naming-data"
             . self::DS . DiscoveryUtil::getInstanceId($serviceName, $ip, $port, $cluster);
         return $failoverFile;
     }
@@ -47,7 +47,7 @@ class LocalDiscoveryInfoProcessor extends Processor
 
     public static function getSnapshotFile($serviceName, $ip, $port, $cluster)
     {
-        $snapshotFile = NacosConfig::getSnapshotPath() . self::DS . "discovery-data-snapshot"
+        $snapshotFile = NacosConfig::getSnapshotPath() . self::DS . "naming-data-snapshot"
             . self::DS . DiscoveryUtil::getInstanceId($serviceName, $ip, $port, $cluster);
         return $snapshotFile;
     }

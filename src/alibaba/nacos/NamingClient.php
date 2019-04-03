@@ -12,22 +12,22 @@ use alibaba\nacos\failover\LocalDiscoveryListInfoProcessor;
 use alibaba\nacos\model\Beat;
 use alibaba\nacos\model\Instance;
 use alibaba\nacos\model\InstanceList;
-use alibaba\nacos\request\discovery\BeatInstanceDiscovery;
-use alibaba\nacos\request\discovery\DeleteInstanceDiscovery;
-use alibaba\nacos\request\discovery\GetInstanceDiscovery;
-use alibaba\nacos\request\discovery\ListInstanceDiscovery;
-use alibaba\nacos\request\discovery\RegisterInstanceDiscovery;
-use alibaba\nacos\request\discovery\UpdateInstanceDiscovery;
+use alibaba\nacos\request\naming\BeatInstanceNaming;
+use alibaba\nacos\request\naming\DeleteInstanceNaming;
+use alibaba\nacos\request\naming\GetInstanceNaming;
+use alibaba\nacos\request\naming\ListInstanceNaming;
+use alibaba\nacos\request\naming\RegisterInstanceNaming;
+use alibaba\nacos\request\naming\UpdateInstanceNaming;
 use alibaba\nacos\util\LogUtil;
 use Exception;
 use ReflectionException;
 
 /**
- * Class DiscoveryClient
+ * Class NamingClient
  * @author suxiaolin
  * @package alibaba\nacos
  */
-class DiscoveryClient
+class NamingClient
 {
     /**
      * @param $serviceName
@@ -47,7 +47,7 @@ class DiscoveryClient
      */
     public static function register($serviceName, $ip, $port, $weight = "", $namespaceId = "", $enable = true, $healthy = true, $clusterName = "", $metadata = "{}")
     {
-        $registerInstanceDiscovery = new RegisterInstanceDiscovery();
+        $registerInstanceDiscovery = new RegisterInstanceNaming();
         $registerInstanceDiscovery->setServiceName($serviceName);
         $registerInstanceDiscovery->setIp($ip);
         $registerInstanceDiscovery->setPort($port);
@@ -76,7 +76,7 @@ class DiscoveryClient
      */
     public static function delete($serviceName, $ip, $port, $namespaceId = "", $clusterName = "")
     {
-        $deleteInstanceDiscovery = new DeleteInstanceDiscovery();
+        $deleteInstanceDiscovery = new DeleteInstanceNaming();
         $deleteInstanceDiscovery->setServiceName($serviceName);
         $deleteInstanceDiscovery->setIp($ip);
         $deleteInstanceDiscovery->setPort($port);
@@ -103,7 +103,7 @@ class DiscoveryClient
      */
     public static function update($serviceName, $ip, $port, $weight = "", $namespaceId = "", $clusterName = "", $metadata = "{}")
     {
-        $updateInstanceDiscovery = new UpdateInstanceDiscovery();
+        $updateInstanceDiscovery = new UpdateInstanceNaming();
         $updateInstanceDiscovery->setServiceName($serviceName);
         $updateInstanceDiscovery->setIp($ip);
         $updateInstanceDiscovery->setPort($port);
@@ -131,7 +131,7 @@ class DiscoveryClient
     public static function listInstances($serviceName, $healthyOnly = false, $namespaceId = "", $clusters = "")
     {
         try {
-            $listInstanceDiscovery = new ListInstanceDiscovery();
+            $listInstanceDiscovery = new ListInstanceNaming();
             $listInstanceDiscovery->setServiceName($serviceName);
             $listInstanceDiscovery->setNamespaceId($namespaceId);
             $listInstanceDiscovery->setClusters($clusters);
@@ -168,7 +168,7 @@ class DiscoveryClient
     public static function get($serviceName, $ip, $port, $healthyOnly = false, $weight = "", $namespaceId = "", $cluster = "")
     {
         try {
-            $getInstanceDiscovery = new GetInstanceDiscovery();
+            $getInstanceDiscovery = new GetInstanceNaming();
             $getInstanceDiscovery->setServiceName($serviceName);
             $getInstanceDiscovery->setIp($ip);
             $getInstanceDiscovery->setPort($port);
@@ -201,7 +201,7 @@ class DiscoveryClient
      */
     public static function beat($serviceName, $beat)
     {
-        $beatInstanceDiscovery = new BeatInstanceDiscovery();
+        $beatInstanceDiscovery = new BeatInstanceNaming();
         $beatInstanceDiscovery->setServiceName($serviceName);
         $beatInstanceDiscovery->setBeat($beat);
 

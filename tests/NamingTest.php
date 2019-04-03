@@ -3,7 +3,7 @@
 namespace alibaba\nacos\request\config;
 
 
-use alibaba\nacos\Discovery;
+use alibaba\nacos\Naming;
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
@@ -15,11 +15,11 @@ use PHPUnit\Framework\TestCase;
 use ReflectionException;
 
 /**
- * Class DiscoveryTest
+ * Class NamingTest
  * @author suxiaolin
  * @package alibaba\nacos\request\config
  */
-class DiscoveryTest extends TestCase
+class NamingTest extends TestCase
 {
     /**
      * This method is called before each test.
@@ -30,7 +30,7 @@ class DiscoveryTest extends TestCase
         NacosConfig::setIsDebug(true);
         // 长轮询10秒一次
         NacosConfig::setLongPullingTimeout(10000);
-        $this->discovery = Discovery::init(
+        $this->discovery = Naming::init(
             "nacos.test.1",
             "11.11.11.11",
             "8848"
@@ -38,7 +38,7 @@ class DiscoveryTest extends TestCase
     }
 
     /**
-     * @var Discovery
+     * @var Naming
      */
     private $discovery;
 

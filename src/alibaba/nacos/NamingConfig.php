@@ -3,10 +3,10 @@
 namespace alibaba\nacos;
 
 /**
- * Class DiscoveryConfig
+ * Class NamingConfig
  * @package alibaba\nacos
  */
-class DiscoveryConfig extends NacosConfig
+class NamingConfig extends NacosConfig
 {
     /**
      * 服务名

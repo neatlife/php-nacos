@@ -1,8 +1,8 @@
 <?php
 
-namespace alibaba\nacos\request\discovery;
+namespace alibaba\nacos\request\naming;
 
-class ListInstanceDiscovery extends DiscoveryRequest
+class ListInstanceNaming extends NamingRequest
 {
     protected $uri = "/nacos/v1/ns/instance/list";
     protected $verb = "GET";

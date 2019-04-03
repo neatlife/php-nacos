@@ -1,16 +1,16 @@
 <?php
 
-namespace tests\request\discovery;
+namespace tests\request\naming;
 
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\model\Instance;
-use alibaba\nacos\request\discovery\GetInstanceDiscovery;
+use alibaba\nacos\request\naming\GetInstanceNaming;
 use ReflectionException;
 use tests\TestCase;
 
-class GetInstanceDiscoveryTest extends TestCase
+class GetInstanceNamingTest extends TestCase
 {
 
     /**
@@ -21,7 +21,7 @@ class GetInstanceDiscoveryTest extends TestCase
      */
     public function testDoRequest()
     {
-        $getInstanceDiscovery = new GetInstanceDiscovery();
+        $getInstanceDiscovery = new GetInstanceNaming();
         $getInstanceDiscovery->setServiceName("nacos.test.1");
         $getInstanceDiscovery->setIp("11.11.11.11");
         $getInstanceDiscovery->setPort("8848");
