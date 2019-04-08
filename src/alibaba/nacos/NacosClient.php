@@ -8,6 +8,9 @@ use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\failover\LocalConfigInfoProcessor;
+use alibaba\nacos\listener\config\Config;
+use alibaba\nacos\listener\config\GetConfigRequestErrorListener;
+use alibaba\nacos\listener\config\ListenerConfigRequestErrorListener;
 use alibaba\nacos\request\config\DeleteConfigRequest;
 use alibaba\nacos\request\config\GetConfigRequest;
 use alibaba\nacos\request\config\ListenerConfigRequest;
@@ -45,6 +48,11 @@ class NacosClient
             $config = LocalConfigInfoProcessor::getFailover($env, $dataId, $group, $tenant);
             $config = $config ? $config
                 : LocalConfigInfoProcessor::getSnapshot($env, $dataId, $group, $tenant);
+            $configListenerParameter = Config::of($env, $dataId, $group, $tenant, $config);
+            GetConfigRequestErrorListener::notify($configListenerParameter);
+            if ($configListenerParameter->isChanged()) {
+                $config = $configListenerParameter->getConfig();
+            }
         }
 
         return $config;
@@ -82,6 +90,7 @@ class NacosClient
                 }
             } catch (Exception $e) {
                 LogUtil::error("listener请求异常, e: " . $e->getMessage());
+                ListenerConfigRequestErrorListener::notify($env, $dataId, $group, $tenant);
                 // 短暂休息会儿
                 usleep(500);
             }

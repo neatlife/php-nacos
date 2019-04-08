@@ -60,6 +60,19 @@ Nacos::init(
 )->listener();
 ```
 
+## 事件监听器
+
+```php
+GetConfigRequestErrorListener::add(function($config) {
+    if (!$config->getConfig()) {
+        echo "获取配置异常, 配置为空，下面进行自定义逻辑处理" . PHP_EOL;
+        // 设置是否修改配置文件内容，如果修改成true，这里设置的配置文件内容将是最终获取到的配置文件
+        $config->setChanged(true);
+        $config->setConfig("hello");
+    }
+});
+```
+
 ## 配置兜底方案
 
 将兜底的配置文件放入下面的路径里
