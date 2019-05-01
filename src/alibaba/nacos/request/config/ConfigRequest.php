@@ -3,8 +3,8 @@
 namespace alibaba\nacos\request\config;
 
 use alibaba\nacos\NacosConfig;
-use alibaba\nacos\request\Request;
 use alibaba\nacos\util\LogUtil;
+use alibaba\nacos\request\Request;
 use alibaba\nacos\util\ReflectionUtil;
 
 /**

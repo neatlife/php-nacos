@@ -2,14 +2,14 @@
 
 namespace alibaba\nacos\request;
 
-use alibaba\nacos\enum\ErrorCodeEnum;
-use alibaba\nacos\exception\RequestUriRequiredException;
-use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
+use ReflectionException;
 use alibaba\nacos\NacosConfig;
 use alibaba\nacos\util\HttpUtil;
+use alibaba\nacos\enum\ErrorCodeEnum;
 use Psr\Http\Message\ResponseInterface;
-use ReflectionException;
+use alibaba\nacos\exception\ResponseCodeErrorException;
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
 
 /**
  * Class Request

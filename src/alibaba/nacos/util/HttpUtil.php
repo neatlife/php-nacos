@@ -4,8 +4,8 @@
 namespace alibaba\nacos\util;
 
 
-use alibaba\nacos\NacosConfig;
 use GuzzleHttp\Client;
+use alibaba\nacos\NacosConfig;
 
 /**
  * Class HttpUtil

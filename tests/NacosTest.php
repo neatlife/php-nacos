@@ -3,10 +3,10 @@
 namespace alibaba\nacos\request\config;
 
 
-use alibaba\nacos\failover\LocalConfigInfoProcessor;
 use alibaba\nacos\Nacos;
 use alibaba\nacos\NacosConfig;
 use PHPUnit\Framework\TestCase;
+use alibaba\nacos\failover\LocalConfigInfoProcessor;
 
 /**
  * Class NacosTest

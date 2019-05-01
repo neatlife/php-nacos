@@ -3,9 +3,9 @@
 namespace tests\util;
 
 
-use alibaba\nacos\util\LogUtil;
 use Exception;
 use tests\TestCase;
+use alibaba\nacos\util\LogUtil;
 
 /**
  * Class LogUtilTest

@@ -3,11 +3,11 @@
 namespace alibaba\nacos\request\config;
 
 
+use tests\TestCase;
+use ReflectionException;
+use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
-use ReflectionException;
-use tests\TestCase;
 
 /**
  * Class ListenerConfigRequestTest

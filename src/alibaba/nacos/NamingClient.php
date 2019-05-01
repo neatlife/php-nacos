@@ -4,23 +4,23 @@
 namespace alibaba\nacos;
 
 
-use alibaba\nacos\exception\RequestUriRequiredException;
-use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
-use alibaba\nacos\failover\LocalDiscoveryInfoProcessor;
-use alibaba\nacos\failover\LocalDiscoveryListInfoProcessor;
-use alibaba\nacos\model\Beat;
-use alibaba\nacos\model\Instance;
-use alibaba\nacos\model\InstanceList;
-use alibaba\nacos\request\naming\BeatInstanceNaming;
-use alibaba\nacos\request\naming\DeleteInstanceNaming;
-use alibaba\nacos\request\naming\GetInstanceNaming;
-use alibaba\nacos\request\naming\ListInstanceNaming;
-use alibaba\nacos\request\naming\RegisterInstanceNaming;
-use alibaba\nacos\request\naming\UpdateInstanceNaming;
-use alibaba\nacos\util\LogUtil;
 use Exception;
 use ReflectionException;
+use alibaba\nacos\model\Beat;
+use alibaba\nacos\util\LogUtil;
+use alibaba\nacos\model\Instance;
+use alibaba\nacos\model\InstanceList;
+use alibaba\nacos\request\naming\GetInstanceNaming;
+use alibaba\nacos\request\naming\BeatInstanceNaming;
+use alibaba\nacos\request\naming\ListInstanceNaming;
+use alibaba\nacos\request\naming\DeleteInstanceNaming;
+use alibaba\nacos\request\naming\UpdateInstanceNaming;
+use alibaba\nacos\exception\ResponseCodeErrorException;
+use alibaba\nacos\failover\LocalDiscoveryInfoProcessor;
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\request\naming\RegisterInstanceNaming;
+use alibaba\nacos\exception\RequestVerbRequiredException;
+use alibaba\nacos\failover\LocalDiscoveryListInfoProcessor;
 
 /**
  * Class NamingClient

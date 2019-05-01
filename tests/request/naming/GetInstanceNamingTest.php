@@ -2,13 +2,13 @@
 
 namespace tests\request\naming;
 
-use alibaba\nacos\exception\RequestUriRequiredException;
-use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
+use tests\TestCase;
+use ReflectionException;
 use alibaba\nacos\model\Instance;
 use alibaba\nacos\request\naming\GetInstanceNaming;
-use ReflectionException;
-use tests\TestCase;
+use alibaba\nacos\exception\ResponseCodeErrorException;
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
 
 class GetInstanceNamingTest extends TestCase
 {

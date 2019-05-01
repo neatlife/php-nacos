@@ -2,8 +2,8 @@
 
 namespace tests\listener\config;
 
-use alibaba\nacos\listener\config\GetConfigRequestErrorListener;
 use alibaba\nacos\Nacos;
+use alibaba\nacos\listener\config\GetConfigRequestErrorListener;
 
 class GetConfigRequestErrorListenerTest extends \PHPUnit\Framework\TestCase
 {
@@ -16,7 +16,7 @@ class GetConfigRequestErrorListenerTest extends \PHPUnit\Framework\TestCase
      */
     public function testNotify()
     {
-        GetConfigRequestErrorListener::add(function($config) {
+        GetConfigRequestErrorListener::add(function ($config) {
             if (!$config->getConfig()) {
                 echo "获取配置异常, 配置为空，下面进行自定义逻辑处理" . PHP_EOL;
                 // 设置是否修改配置文件内容，如果修改成true，这里设置的配置文件内容将是最终获取到的配置文件

@@ -2,8 +2,8 @@
 
 namespace tests\util;
 
-use alibaba\nacos\util\HttpUtil;
 use tests\TestCase;
+use alibaba\nacos\util\HttpUtil;
 
 /**
  * Class HttpUtilTest

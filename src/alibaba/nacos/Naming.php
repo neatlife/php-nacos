@@ -4,8 +4,8 @@
 namespace alibaba\nacos;
 
 
-use alibaba\nacos\model\Instance;
 use ReflectionException;
+use alibaba\nacos\model\Instance;
 
 /**
  * Class Naming

@@ -4,10 +4,10 @@
 namespace alibaba\nacos\failover;
 
 
-use alibaba\nacos\model\InstanceList;
+use SplFileInfo;
 use alibaba\nacos\NacosConfig;
 use alibaba\nacos\util\DiscoveryUtil;
-use SplFileInfo;
+use alibaba\nacos\model\InstanceList;
 
 /**
  * Class LocalDiscoveryListInfoProcessor

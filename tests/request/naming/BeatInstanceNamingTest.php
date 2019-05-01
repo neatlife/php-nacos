@@ -2,12 +2,12 @@
 
 namespace tests\request\naming;
 
+use tests\TestCase;
+use ReflectionException;
+use alibaba\nacos\request\naming\BeatInstanceNaming;
+use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\exception\RequestUriRequiredException;
 use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
-use alibaba\nacos\request\naming\BeatInstanceNaming;
-use ReflectionException;
-use tests\TestCase;
 
 class BeatInstanceNamingTest extends TestCase
 {

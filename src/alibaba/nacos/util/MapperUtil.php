@@ -4,8 +4,8 @@
 namespace alibaba\nacos\util;
 
 
-use ReflectionException;
 use ReflectionObject;
+use ReflectionException;
 
 class MapperUtil
 {

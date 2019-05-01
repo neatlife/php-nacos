@@ -4,8 +4,8 @@
 namespace alibaba\nacos\failover;
 
 
-use alibaba\nacos\NacosConfig;
 use SplFileInfo;
+use alibaba\nacos\NacosConfig;
 
 /**
  * Class LocalConfigInfoProcessor

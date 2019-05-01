@@ -3,10 +3,10 @@
 
 namespace alibaba\nacos\util;
 
-use alibaba\nacos\NacosConfig;
 use Exception;
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use alibaba\nacos\NacosConfig;
+use Monolog\Handler\StreamHandler;
 
 /**
  * Class LogUtil

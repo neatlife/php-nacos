@@ -3,8 +3,8 @@
 namespace tests\util;
 
 
-use alibaba\nacos\util\EncodeUtil;
 use tests\TestCase;
+use alibaba\nacos\util\EncodeUtil;
 
 /**
  * Class EncodeTest

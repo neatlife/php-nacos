@@ -3,16 +3,16 @@
 namespace alibaba\nacos\request\config;
 
 
+use ReflectionException;
 use alibaba\nacos\Naming;
-use alibaba\nacos\exception\RequestUriRequiredException;
-use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
 use alibaba\nacos\model\Beat;
-use alibaba\nacos\model\Instance;
-use alibaba\nacos\model\InstanceList;
 use alibaba\nacos\NacosConfig;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
+use alibaba\nacos\model\Instance;
+use alibaba\nacos\model\InstanceList;
+use alibaba\nacos\exception\ResponseCodeErrorException;
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
 
 /**
  * Class NamingTest

@@ -4,20 +4,20 @@
 namespace alibaba\nacos;
 
 
-use alibaba\nacos\exception\RequestUriRequiredException;
-use alibaba\nacos\exception\RequestVerbRequiredException;
-use alibaba\nacos\exception\ResponseCodeErrorException;
-use alibaba\nacos\failover\LocalConfigInfoProcessor;
-use alibaba\nacos\listener\config\Config;
-use alibaba\nacos\listener\config\GetConfigRequestErrorListener;
-use alibaba\nacos\listener\config\ListenerConfigRequestErrorListener;
-use alibaba\nacos\request\config\DeleteConfigRequest;
-use alibaba\nacos\request\config\GetConfigRequest;
-use alibaba\nacos\request\config\ListenerConfigRequest;
-use alibaba\nacos\request\config\PublishConfigRequest;
-use alibaba\nacos\util\LogUtil;
 use Exception;
 use ReflectionException;
+use alibaba\nacos\util\LogUtil;
+use alibaba\nacos\listener\config\Config;
+use alibaba\nacos\request\config\GetConfigRequest;
+use alibaba\nacos\failover\LocalConfigInfoProcessor;
+use alibaba\nacos\request\config\DeleteConfigRequest;
+use alibaba\nacos\request\config\PublishConfigRequest;
+use alibaba\nacos\exception\ResponseCodeErrorException;
+use alibaba\nacos\request\config\ListenerConfigRequest;
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
+use alibaba\nacos\listener\config\GetConfigRequestErrorListener;
+use alibaba\nacos\listener\config\ListenerConfigRequestErrorListener;
 
 /**
  * Class NacosClient
