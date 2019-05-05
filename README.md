@@ -10,9 +10,9 @@
 
 ### 开发计划
 
-- [ ] 增强容错机制
+- [x] 增强容错机制
 - [x] [实现服务发现](NAMING.md)
-- [ ] Laravel框架集成
+- [x] [Laravel框架集成](https://juejin.im/post/5ccf645b6fb9a032435dba16)
 - [ ] Yii框架集成
 
 ## composer安装
@@ -26,7 +26,7 @@ composer require alibaba/nacos
 定时1分钟拉取一次
 
 ```bash
-*/1 * * * * php path/to/cron.php
+*/1 */1 * * * php path/to/cron.php
 ```
 
 ```php
