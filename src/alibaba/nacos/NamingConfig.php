@@ -44,6 +44,11 @@ class NamingConfig extends NacosConfig
     private static $weight = "";
 
     /**
+     * 示注册的实例是临时实例还是持久化实例, true临时，false持久化
+     */
+    private static $ephemeral = true;
+
+    /**
      * @return mixed
      */
     public static function getServiceName()
@@ -123,4 +128,19 @@ class NamingConfig extends NacosConfig
         self::$weight = $weight;
     }
 
+    /**
+     * @return mixed
+     */
+    public static function getEphemeral()
+    {
+        return self::$ephemeral;
+    }
+
+    /**
+     * @param mixed $ephemeral
+     */
+    public static function setEphemeral($ephemeral)
+    {
+        self::$ephemeral = $ephemeral;
+    }
 }

@@ -5,6 +5,7 @@ namespace alibaba\nacos\request\naming;
 
 
 use alibaba\nacos\NacosConfig;
+use alibaba\nacos\NamingConfig;
 use alibaba\nacos\util\LogUtil;
 use alibaba\nacos\request\Request;
 use alibaba\nacos\util\ReflectionUtil;
@@ -24,6 +25,10 @@ class NamingRequest extends Request
             } else {
                 $parameterList[$propertyName] = $propertyValue;
             }
+        }
+
+        if ($this instanceof RegisterInstanceNaming) {
+            $parameterList["ephemeral"] = NamingConfig::getEphemeral();
         }
 
         if (NacosConfig::getIsDebug()) {

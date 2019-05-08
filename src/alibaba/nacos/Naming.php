@@ -21,7 +21,7 @@ class Naming
      * @param string $weight
      * @return Naming
      */
-    public static function init($serviceName, $ip, $port, $namespaceId = "", $weight = "")
+    public static function init($serviceName, $ip, $port, $namespaceId = "", $weight = "", $ephemeral = true)
     {
         static $client;
         if ($client == null) {
@@ -30,6 +30,7 @@ class Naming
             NamingConfig::setPort($port);
             NamingConfig::setNamespaceId($namespaceId);
             NamingConfig::setWeight($weight);
+            NamingConfig::setEphemeral($ephemeral);
 
             $client = new self();
         }
