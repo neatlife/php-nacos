@@ -14,6 +14,8 @@
 - [x] [实现服务发现](NAMING.md)
 - [x] [Laravel框架集成](https://juejin.im/post/5ccf645b6fb9a032435dba16)
 - [ ] Yii框架集成
+- [ ] ThinkPHP框架集成
+- [ ] Symfony框架集成
 
 ## composer安装
 
@@ -86,3 +88,8 @@ GetConfigRequestErrorListener::add(function($config) {
 工作目录/nacos/config/{$env}_nacos/config-data/{$dataId}
 
 nacos会在无法从配置中心查询配置文件时将读取上面的配置文件
+
+## 感谢nacos团队赠送的纪念杯
+
+![](docs/img/nacos-mug-1.jpg)
+![](docs/img/nacos-mug-2.jpg)
