@@ -6,41 +6,33 @@ namespace alibaba\nacos\request\config;
 use alibaba\nacos\Nacos;
 use alibaba\nacos\NacosConfig;
 use PHPUnit\Framework\TestCase;
-use alibaba\nacos\failover\LocalConfigInfoProcessor;
 
 /**
- * Class NacosTest
+ * Class DummyNacosTest
  * @author suxiaolin
  * @package alibaba\nacos\request\config
  */
-class NacosTest extends TestCase
+class DummyNacosTest extends TestCase
 {
     public function testRunOnce()
     {
-        Nacos::init(
+        $config = Nacos::init(
             "http://127.0.0.1:8848/",
-            "dev",
-            "LARAVEL",
-            "DEFAULT_GROUP",
+            "dummy_dev",
+            "DUMMY",
+            "DUMMY_GROUP",
             ""
         )->runOnce();
-        $this->assertFileExists(
-            LocalConfigInfoProcessor::getSnapshotFile(
-                "dev",
-                "LARAVEL",
-                "DEFAULT_GROUP",
-                ""
-            )
-        );
+        $this->assertEmpty($config);
     }
 
     public function testListener()
     {
         Nacos::init(
             "http://127.0.0.1:8848/",
-            "dev",
-            "LARAVEL",
-            "DEFAULT_GROUP",
+            "dummy_dev",
+            "DUMMY",
+            "DUMMY_GROUP",
             ""
         )->listener();
     }
@@ -50,6 +42,8 @@ class NacosTest extends TestCase
      */
     protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
     {
+        putenv("NACOS_ENV=local");
+
         NacosConfig::setIsDebug(true);
         // 长轮询10秒一次
         NacosConfig::setLongPullingTimeout(10000);

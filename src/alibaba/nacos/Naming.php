@@ -131,6 +131,25 @@ class Naming
     }
 
     /**
+     * @param Instance $instance
+     * @return model\Beat
+     * @throws ReflectionException
+     * @throws exception\RequestUriRequiredException
+     * @throws exception\RequestVerbRequiredException
+     * @throws exception\ResponseCodeErrorException
+     */
+    public function beat(Instance $instance = null)
+    {
+        if ($instance == null) {
+            $instance = $this->get();
+        }
+        return NamingClient::beat(
+            NamingConfig::getServiceName(),
+            $instance->encode()
+        );
+    }
+
+    /**
      * @param bool $healthyOnly
      * @param string $weight
      * @param string $namespaceId
@@ -151,25 +170,6 @@ class Naming
             $weight,
             $namespaceId,
             $clusters
-        );
-    }
-
-    /**
-     * @param Instance $instance
-     * @return model\Beat
-     * @throws ReflectionException
-     * @throws exception\RequestUriRequiredException
-     * @throws exception\RequestVerbRequiredException
-     * @throws exception\ResponseCodeErrorException
-     */
-    public function beat(Instance $instance = null)
-    {
-        if ($instance == null) {
-            $instance = $this->get();
-        }
-        return NamingClient::beat(
-            NamingConfig::getServiceName(),
-            $instance->encode()
         );
     }
 

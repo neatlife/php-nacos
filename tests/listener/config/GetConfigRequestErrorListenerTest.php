@@ -3,16 +3,21 @@
 namespace tests\listener\config;
 
 use alibaba\nacos\Nacos;
+use ReflectionException;
+use PHPUnit\Framework\TestCase;
+use alibaba\nacos\exception\ResponseCodeErrorException;
+use alibaba\nacos\exception\RequestUriRequiredException;
+use alibaba\nacos\exception\RequestVerbRequiredException;
 use alibaba\nacos\listener\config\GetConfigRequestErrorListener;
 
-class GetConfigRequestErrorListenerTest extends \PHPUnit\Framework\TestCase
+class GetConfigRequestErrorListenerTest extends TestCase
 {
 
     /**
-     * @throws \ReflectionException
-     * @throws \alibaba\nacos\exception\RequestUriRequiredException
-     * @throws \alibaba\nacos\exception\RequestVerbRequiredException
-     * @throws \alibaba\nacos\exception\ResponseCodeErrorException
+     * @throws ReflectionException
+     * @throws RequestUriRequiredException
+     * @throws RequestVerbRequiredException
+     * @throws ResponseCodeErrorException
      */
     public function testNotify()
     {

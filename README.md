@@ -13,6 +13,7 @@
 - [x] 增强容错机制
 - [x] [实现服务发现](NAMING.md)
 - [x] [Laravel框架集成](https://juejin.im/post/5ccf645b6fb9a032435dba16)
+- [x] Dummy模式(本地开发不走配置中心)
 - [ ] Yii框架集成
 - [ ] ThinkPHP框架集成
 - [ ] Symfony框架集成
@@ -88,6 +89,14 @@ GetConfigRequestErrorListener::add(function($config) {
 工作目录/nacos/config/{$env}_nacos/config-data/{$dataId}
 
 nacos会在无法从配置中心查询配置文件时将读取上面的配置文件
+
+## Dummy模式(本地开发不走配置中心)
+
+配置环境变量NACOS_ENV=local再启动项目
+
+```shell
+export NACOS_ENV=local
+```
 
 ## 感谢nacos团队赠送的纪念杯
 

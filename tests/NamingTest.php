@@ -22,22 +22,6 @@ use alibaba\nacos\exception\RequestVerbRequiredException;
 class NamingTest extends TestCase
 {
     /**
-     * This method is called before each test.
-     */
-    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
-    {
-        NacosConfig::setHost("http://127.0.0.1:8848/");
-        NacosConfig::setIsDebug(true);
-        // 长轮询10秒一次
-        NacosConfig::setLongPullingTimeout(10000);
-        $this->discovery = Naming::init(
-            "nacos.test.1",
-            "11.11.11.11",
-            "8848"
-        );
-    }
-
-    /**
      * @var Naming
      */
     private $discovery;
@@ -108,5 +92,21 @@ class NamingTest extends TestCase
     {
         $beat = $this->discovery->beat($this->discovery->get());
         $this->assertInstanceOf(Beat::class, $beat);
+    }
+
+    /**
+     * This method is called before each test.
+     */
+    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
+    {
+        NacosConfig::setHost("http://127.0.0.1:8848/");
+        NacosConfig::setIsDebug(true);
+        // 长轮询10秒一次
+        NacosConfig::setLongPullingTimeout(10000);
+        $this->discovery = Naming::init(
+            "nacos.test.1",
+            "11.11.11.11",
+            "8848"
+        );
     }
 }
