@@ -63,7 +63,7 @@ class LocalConfigInfoProcessor extends Processor
     {
         $snapshotFile = self::getSnapshotFile($envName, $dataId, $group, $tenant);
         if (!$config) {
-            unlink($snapshotFile);
+            @unlink($snapshotFile);
         } else {
             $file = new SplFileInfo($snapshotFile);
             if (!is_dir($file->getPath())) {
