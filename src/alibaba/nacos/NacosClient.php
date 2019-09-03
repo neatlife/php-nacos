@@ -60,7 +60,8 @@ class NacosClient implements NacosClientInterface
         $getConfigRequest = new GetConfigRequest();
         $getConfigRequest->setDataId($dataId);
         $getConfigRequest->setGroup($group);
-
+        $getConfigRequest->setTenant($tenant);
+        
         try {
             $response = $getConfigRequest->doRequest();
             $config = $response->getBody()->getContents();
