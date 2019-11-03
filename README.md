@@ -98,6 +98,33 @@ nacos会在无法从配置中心查询配置文件时将读取上面的配置文
 export NACOS_ENV=local
 ```
 
+## 贡献者 ✨
+
+
+Thanks goes to these wonderful people:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/fatrbaby"><img src="https://avatars0.githubusercontent.com/u/4350262?s=88&v=4" width="100px;"/>
+      <br /><sub><b>fatrbaby</b></sub></a><br />
+      <a href="https://github.com/neatlife/php-nacos/commits?author=fatrbaby" title="Documentation">📖</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/TELstatic"><img src="https://avatars3.githubusercontent.com/u/18006395?s=88&v=4" width="100px;"/>
+      <br /><sub><b>TELstatic</b></sub></a><br />
+      <a href="https://github.com/neatlife/php-nacos/commits?author=TELstatic" title="Documentation">📖</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/wujunze"><img src="https://avatars3.githubusercontent.com/u/12997869?s=88&v=4" width="100px;"/>
+      <br /><sub><b>wujunze</b></sub></a><br />
+      <a href="https://github.com/neatlife/php-nacos/commits?author=wujunze" title="Documentation">📖</a>
+    </td>
+  </tr>
+</table>
+
+Contributions of any kind are welcome!
+
 ## 感谢nacos团队赠送的纪念杯
 
 ![](docs/img/nacos-mug-1.jpg)
