@@ -19,7 +19,9 @@ abstract class Model
     {
         $instance = new static();
         foreach (json_decode($instanceJson) as $propertyName => $propertyValue) {
-            $instance->{"set" . ucfirst($propertyName)}($propertyValue);
+            if (property_exists($instance, $propertyName)) {
+                $instance->{"set" . ucfirst($propertyName)}($propertyValue);
+            }
         }
         return $instance;
     }

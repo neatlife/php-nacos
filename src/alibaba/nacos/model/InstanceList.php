@@ -17,6 +17,7 @@ class InstanceList extends Model
     protected $lastRefTime; //long
     protected $env; //String
     protected $clusters;
+    protected $name; // String
 
     /**
      * @return mixed
@@ -166,4 +167,19 @@ class InstanceList extends Model
         $this->clusters = $clusters;
     } //String
 
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 }
