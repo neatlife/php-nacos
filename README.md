@@ -120,6 +120,16 @@ Thanks goes to these wonderful people:
       <br /><sub><b>wujunze</b></sub></a><br />
       <a href="https://github.com/neatlife/php-nacos/commits?author=wujunze" title="Documentation">📖</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/ifcute"><img src="https://avatars.githubusercontent.com/u/17122751?v=4" width="100px;"/>
+      <br /><sub><b>ifcute</b></sub></a><br />
+      <a href="https://github.com/neatlife/php-nacos/commits?author=ifcute" title="Documentation">📖</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/RobberPhex"><img src="https://avatars.githubusercontent.com/u/1926185?v=4" width="100px;"/>
+      <br /><sub><b>RobberPhex</b></sub></a><br />
+      <a href="https://github.com/neatlife/php-nacos/commits?author=RobberPhex" title="Documentation">📖</a>
+    </td>
   </tr>
 </table>
 
