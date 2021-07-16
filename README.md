@@ -1,6 +1,6 @@
 # 阿里巴巴nacos配置中心-PHP客户端
 
-[Nacos配置中心](https://github.com/alibaba/nacos)的PHP客户端，更多关于Nacos配置中心的介绍，可以查看[Nacos配置中心Wiki](https://github.com/alibaba/nacos/wiki)。
+[Nacos配置中心](https://nacos.io/) 的PHP客户端，更多关于Nacos配置中心的介绍，可以查看 [Nacos文档](https://nacos.io/zh-cn/docs/what-is-nacos.html) 。
 
 ### 特性
 
@@ -14,6 +14,8 @@
 - [x] [实现服务发现](NAMING.md)
 - [x] [Laravel框架集成](https://juejin.im/post/5ccf645b6fb9a032435dba16)
 - [x] Dummy模式(本地开发不走配置中心)
+- [x] 实现Nacos 2.0协议（配置部分）
+- [ ] 实现Nacos 2.0协议（注册中心部分）
 - [ ] Yii框架集成
 - [ ] ThinkPHP框架集成
 - [ ] Symfony框架集成
@@ -22,6 +24,23 @@
 
 ``` bash
 composer require alibaba/nacos
+```
+
+## 主动获取配置内容
+
+```php
+use \com\alibaba\nacos\NacosFactory;
+use \com\alibaba\nacos\api\PropertyKeyConst;
+
+$properties = [
+    PropertyKeyConst::SERVER_ADDR => 'mse-189af104-p.nacos-ans.mse.aliyuncs.com'
+];
+$cs = NacosFactory::createConfigService($properties);
+
+$dataId = "dataId";
+$group = "group";
+
+$res = $cs->getConfig($dataId, $group, 5000);
 ```
 
 ## 使用crontab拉取配置文件

@@ -12,14 +12,20 @@
   "require": {
     "guzzlehttp/guzzle": "^6.3",
     "monolog/monolog": "^1.24|^2.0",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-grpc": "*",
+    "ext-protobuf": "*",
+    "grpc/grpc": "^1.38",
+    "google/protobuf": "^3.17"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.5|^8.0"
   },
   "autoload": {
     "psr-4": {
-      "alibaba\\": "src/alibaba/"
+      "alibaba\\": "src/alibaba/",
+      "com\\": "src/com/",
+      "": "generated/"
     }
   },
   "autoload-dev": {
