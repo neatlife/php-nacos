@@ -8,6 +8,7 @@ use alibaba\nacos\util\LogUtil;
 
 /**
  * Class Nacos
+ *
  * @author suxiaolin
  * @package alibaba\nacos
  */
@@ -34,6 +35,7 @@ class Nacos
 
             $client = new self();
         }
+
         return $client;
     }
 
@@ -44,7 +46,8 @@ class Nacos
 
     public function listener()
     {
-        call_user_func_array([self::$clientClass, "listener"], [NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), NacosConfig::getTenant()]);
+        call_user_func_array([self::$clientClass, "listener"], [NacosConfig::getEnv(), NacosConfig::getDataId(), NacosConfig::getGroup(), '', NacosConfig::getTenant()]);
+
         return $this;
     }
 
