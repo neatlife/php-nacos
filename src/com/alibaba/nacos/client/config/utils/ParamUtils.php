@@ -14,6 +14,8 @@ class ParamUtils
 
     private const GROUP_INVALID_MSG = "group invalid";
 
+    private const CONTENT_INVALID_MSG = "content invalid";
+
     public static function isValid(string $param): bool
     {
         $len = strlen($param);
@@ -37,6 +39,8 @@ class ParamUtils
     }
 
     /**
+     * Check key param.
+     *
      * @throws NacosException
      */
     public static function checkKeyParam(string $dataId, string $group)
@@ -46,6 +50,19 @@ class ParamUtils
         }
         if (empty($group) || !ParamUtils::isValid($group)) {
             throw new NacosException(self::GROUP_INVALID_MSG, NacosException::CLIENT_INVALID_PARAM);
+        }
+    }
+
+    /**
+     * Check parameter.
+     *
+     * @throws NacosException
+     */
+    public static function checkParam(string $dataId, string $group, string $content)
+    {
+        self::checkKeyParam($dataId, $group);
+        if (empty($content)) {
+            throw new NacosException(self::CONTENT_INVALID_MSG, NacosException::CLIENT_INVALID_PARAM);
         }
     }
 }

@@ -2,10 +2,10 @@
 
 namespace com\alibaba\nacos\client\config\impl;
 
+use com\alibaba\nacos\api\exception\NacosException;
 use com\alibaba\nacos\client\config\common\ConfigConstants;
 use com\alibaba\nacos\client\config\filter\impl\ConfigResponse;
 use com\alibaba\nacos\common\remote\client\RpcClient;
-use Psr\Log\LoggerInterface;
 
 class ClientWorker
 {
@@ -34,5 +34,15 @@ class ClientWorker
         $configResponse->putParameter(ConfigConstants::CONFIG_TYPE, $jsonArr['contentType']);
         $configResponse->putParameter(ConfigConstants::ENCRYPTED_DATA_KEY, $jsonArr['encryptedDataKey']);
         return $configResponse;
+    }
+
+    public function publishConfig(string $dataId, string $group, string $tenant, string $content): bool
+    {
+        $jsonValue = $this->agent->publishConfig($dataId, $group, $tenant, $content);
+        $jsonArr = json_decode($jsonValue, true);
+        if ($jsonArr['resultCode'] != 200) {
+            throw new NacosException($jsonArr['message'], NacosException::CLIENT_INVALID_PARAM);
+        }
+        return true;
     }
 }

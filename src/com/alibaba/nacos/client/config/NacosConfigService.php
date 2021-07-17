@@ -44,7 +44,9 @@ class NacosConfigService implements ConfigService
 
     function publishConfig(string $dataId, string $group, string $content): bool
     {
-        // TODO: Implement publishConfig() method.
+        $group = $this->blank2defaultGroup($group);
+        ParamUtils::checkParam($dataId, $group, $content);
+        return $this->clientWorker->publishConfig($dataId, $group, $this->namespace, $content);
     }
 
     function removeConfig(string $dataId, string $group): bool

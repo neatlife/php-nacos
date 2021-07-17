@@ -100,7 +100,8 @@ class RpcClient
         $call = $client->requestBiStream();
         $call->write($req);
         $call->writesDone();
-        usleep(600);
+        //wait to register connection setup
+        usleep(750);
     }
 
     public function queryConfig(string $dataId, string $group, string $tenant, int $readTimeout,
@@ -127,6 +128,46 @@ class RpcClient
             'notify' => $notify,
             'module' => 'config',
         ];
+        $req = new Payload();
+        $req->setMetadata($newMeta);
+        $body = new Any();
+        $body->setValue(json_encode($jsonArr));
+        $req->setBody($body);
+
+        /**
+         * @type $reply Payload
+         */
+        list($reply, $status) = $client->request($req)->wait();
+
+        $resAny = $reply->getBody();
+        $value = $resAny->getValue();
+        return $value;
+    }
+
+    public function publishConfig(string $dataId, string $group, string $tenant, string $content): string
+    {
+        $cred = ChannelCredentials::createInsecure();
+        $hostname = $this->serverListManager->genNextServer();
+
+        $client = new RequestClient($hostname, ['credentials' => $cred], $this->channel);
+
+        $newMeta = new Metadata();
+        $newMeta->setClientIp(NetUtils::localIP());
+        $newMeta->setType('ConfigPublishRequest');
+        $newMeta->setHeaders([
+            'charset' => 'UTF-8',
+            "exConfigInfo" => "true",
+        ]);
+
+        $jsonArr = [
+            'headers' => ['test' => 'test'],
+            'dataId' => $dataId,
+            'group' => $group,
+            'tenant' => $tenant,
+            'content' => $content,
+            'module' => 'config',
+        ];
+
         $req = new Payload();
         $req->setMetadata($newMeta);
         $body = new Any();
