@@ -45,4 +45,14 @@ class ClientWorker
         }
         return true;
     }
+
+    public function removeConfig(string $dataId, string $group,string $tenant): bool
+    {
+        $jsonValue = $this->agent->removeConfig($dataId, $group, $tenant);
+        $jsonArr = json_decode($jsonValue, true);
+        if ($jsonArr['resultCode'] != 200) {
+            throw new NacosException($jsonArr['message'], NacosException::CLIENT_INVALID_PARAM);
+        }
+        return true;
+    }
 }

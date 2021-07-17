@@ -183,4 +183,43 @@ class RpcClient
         $value = $resAny->getValue();
         return $value;
     }
+
+    public function removeConfig(string $dataId, string $group, string $tenant): string
+    {
+        $cred = ChannelCredentials::createInsecure();
+        $hostname = $this->serverListManager->genNextServer();
+
+        $client = new RequestClient($hostname, ['credentials' => $cred], $this->channel);
+
+        $newMeta = new Metadata();
+        $newMeta->setClientIp(NetUtils::localIP());
+        $newMeta->setType('ConfigRemoveRequest');
+        $newMeta->setHeaders([
+            'charset' => 'UTF-8',
+            "exConfigInfo" => "true",
+        ]);
+
+        $jsonArr = [
+            'headers' => ['test' => 'test'],
+            'dataId' => $dataId,
+            'group' => $group,
+            'tenant' => $tenant,
+            'module' => 'config',
+        ];
+
+        $req = new Payload();
+        $req->setMetadata($newMeta);
+        $body = new Any();
+        $body->setValue(json_encode($jsonArr));
+        $req->setBody($body);
+
+        /**
+         * @type $reply Payload
+         */
+        list($reply, $status) = $client->request($req)->wait();
+
+        $resAny = $reply->getBody();
+        $value = $resAny->getValue();
+        return $value;
+    }
 }

@@ -51,7 +51,9 @@ class NacosConfigService implements ConfigService
 
     function removeConfig(string $dataId, string $group): bool
     {
-        // TODO: Implement removeConfig() method.
+        $group = $this->blank2defaultGroup($group);
+        ParamUtils::checkKeyParam($dataId, $group);
+        return $this->clientWorker->removeConfig($dataId, $group, $this->namespace);
     }
 
     private function blank2defaultGroup(string $group): string
