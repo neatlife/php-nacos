@@ -26,7 +26,7 @@
 composer require alibaba/nacos
 ```
 
-## 主动获取配置内容
+## 主动获取/发布配置内容
 
 ```php
 use \com\alibaba\nacos\NacosFactory;
@@ -40,6 +40,8 @@ $cs = NacosFactory::createConfigService($properties);
 $dataId = "dataId";
 $group = "group";
 
+$cs->removeConfig($dataId, $group);
+$cs->publishConfig($dataId, $group, "Content");
 $res = $cs->getConfig($dataId, $group, 5000);
 ```
 
@@ -118,7 +120,6 @@ export NACOS_ENV=local
 ```
 
 ## 贡献者 ✨
-
 
 Thanks goes to these wonderful people:
 
