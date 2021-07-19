@@ -57,7 +57,7 @@ class ServerListManager
             }
         } else {
             if (empty($endpoint)) {
-                throw new NacosException(NacosException::CLIENT_INVALID_PARAM, "endpoint is blank");
+                throw new NacosException("endpoint is blank", NacosException::CLIENT_INVALID_PARAM);
             }
             if (empty($this->namespace)) {
                 $this->name = $endpoint;

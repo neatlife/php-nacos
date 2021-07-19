@@ -13,5 +13,9 @@ $cs = NacosFactory::createConfigService($properties);
 $dataId = "dataId";
 $group = "group";
 
+$cs->removeConfig($dataId, $group);
+
+$cs->publishConfig($dataId, $group, "Content!");
+
 $res = $cs->getConfig($dataId, $group, 5000);
 var_dump($res);
