@@ -27,9 +27,11 @@ class NamingRequest extends Request
             }
         }
 
-        if ($this instanceof RegisterInstanceNaming) {
-            $parameterList["ephemeral"] = NamingConfig::getEphemeral();
-        }
+//        if ($this instanceof RegisterInstanceNaming) {
+//            $parameterList["ephemeral"] = NamingConfig::getEphemeral();
+//        }
+        //修改为所有接口都传这个参数，不传这个参数，删除不会成功的
+        $parameterList["ephemeral"] = NamingConfig::getEphemeral();
 
         if (NacosConfig::getIsDebug()) {
             LogUtil::info(strtr("parameterList: {parameterList}, headers: {headers}", [
