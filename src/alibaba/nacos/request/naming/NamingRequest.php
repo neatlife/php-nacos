@@ -27,7 +27,9 @@ class NamingRequest extends Request
             }
         }
 
-        if ($this instanceof RegisterInstanceNaming) {
+        if ($this instanceof RegisterInstanceNaming || $this instanceof DeleteInstanceNaming ||
+            $this instanceof UpdateInstanceNaming || $this instanceof ListInstanceNaming ||
+            $this instanceof BeatInstanceNaming) {
             $parameterList["ephemeral"] = NamingConfig::getEphemeral();
         }
 

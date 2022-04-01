@@ -35,7 +35,7 @@ abstract class Request
      *
      * @var array
      */
-    protected $standaloneParameterList = ["uri", "verb"];
+    protected $standaloneParameterList = ["uri", "verb", "standaloneParameterList"];
 
     /**
      * 发起请求，做返回值异常检查
