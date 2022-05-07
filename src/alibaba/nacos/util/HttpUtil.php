@@ -16,6 +16,13 @@ class HttpUtil
 {
     public static function request($verb, $uri, $body = [], $headers = [], $options = [])
     {
+        //这个主要是为了解决 http_build_query 会转布尔型转换成0和1的问题
+        foreach ($body as &$value){
+            if (is_bool($value)) {
+                $value = $value ? "true" : "false";
+            }
+        }
+        
         $httpClient = self::getGuzzle();
         $parameterList = [
             'headers' => $headers,
