@@ -38,7 +38,7 @@ class Naming
     }
 
     /**
-     * @param bool $enable
+     * @param bool $enabled
      * @param bool $healthy
      * @param string $clusterName
      * @param string $metadata
@@ -48,7 +48,7 @@ class Naming
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
      */
-    public function register($enable = true, $healthy = true, $clusterName = "", $metadata = "{}")
+    public function register($enabled = true, $healthy = true, $clusterName = "", $metadata = "{}")
     {
         return NamingClient::register(
             NamingConfig::getServiceName(),
@@ -56,7 +56,7 @@ class Naming
             NamingConfig::getPort(),
             NamingConfig::getWeight(),
             NamingConfig::getNamespaceId(),
-            $enable,
+            $enabled,
             $healthy,
             $clusterName,
             $metadata

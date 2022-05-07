@@ -45,7 +45,7 @@ class NamingClient
      * @throws RequestVerbRequiredException
      * @throws ResponseCodeErrorException
      */
-    public static function register($serviceName, $ip, $port, $weight = "", $namespaceId = "", $enable = true, $healthy = true, $clusterName = "", $metadata = "{}")
+    public static function register($serviceName, $ip, $port, $weight = "", $namespaceId = "", $enabled = true, $healthy = true, $clusterName = "", $metadata = "{}")
     {
         $registerInstanceDiscovery = new RegisterInstanceNaming();
         $registerInstanceDiscovery->setServiceName($serviceName);
@@ -53,7 +53,7 @@ class NamingClient
         $registerInstanceDiscovery->setPort($port);
         $registerInstanceDiscovery->setNamespaceId($namespaceId);
         $registerInstanceDiscovery->setWeight($weight);
-        $registerInstanceDiscovery->setEnable($enable);
+        $registerInstanceDiscovery->setEnabled($enabled);
         $registerInstanceDiscovery->setHealthy($healthy);
         $registerInstanceDiscovery->setMetadata($metadata);
         $registerInstanceDiscovery->setClusterName($clusterName);
