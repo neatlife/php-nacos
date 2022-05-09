@@ -40,7 +40,7 @@ class RegisterInstanceNaming extends NamingRequest
      *
      * @var
      */
-    private $enable;
+    private $enabled;
 
     /**
      * 是否健康
@@ -137,17 +137,17 @@ class RegisterInstanceNaming extends NamingRequest
     /**
      * @return mixed
      */
-    public function getEnable()
+    public function getEnabled()
     {
-        return $this->enable;
+        return $this->enabled;
     }
 
     /**
-     * @param mixed $enable
+     * @param mixed $enabled
      */
-    public function setEnable($enable)
+    public function setEnabled($enabled)
     {
-        $this->enable = $enable;
+        $this->enabled = $enabled;
     }
 
     /**
