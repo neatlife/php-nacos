@@ -132,21 +132,34 @@ class Naming
 
     /**
      * @param Instance $instance
+     * @param bool $lightBeatEnabled
      * @return model\Beat
      * @throws ReflectionException
      * @throws exception\RequestUriRequiredException
      * @throws exception\RequestVerbRequiredException
      * @throws exception\ResponseCodeErrorException
      */
-    public function beat(Instance $instance = null)
+    public function beat(Instance $instance = null, $lightBeatEnabled = true)
     {
         if ($instance == null) {
             $instance = $this->get();
         }
-        return NamingClient::beat(
+
+        $result = NamingClient::beat(
             NamingConfig::getServiceName(),
-            $instance->encode()
+            $instance->getIp(),
+            $instance->getPort(),
+            $lightBeatEnabled ? "" : $instance->encode(), //如果是轻量级心跳,不能传beat信息,需要设置为空,否则心跳会失败
+            "",
+            $instance->getClusterName()
         );
+
+        //如果轻量级失败,走一次重量级心跳
+        if ($result->getCode() == 20404) {
+            $this->beat($instance, false);
+        }
+
+        return $result;
     }
 
     /**

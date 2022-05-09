@@ -199,10 +199,14 @@ class NamingClient
      * @throws RequestVerbRequiredException
      * @throws ResponseCodeErrorException
      */
-    public static function beat($serviceName, $beat)
+    public static function beat($serviceName, $ip, $port, $beat, $namespaceId = "", $cluster = "")
     {
         $beatInstanceDiscovery = new BeatInstanceNaming();
         $beatInstanceDiscovery->setServiceName($serviceName);
+        $beatInstanceDiscovery->setIp($ip);
+        $beatInstanceDiscovery->setPort($port);
+        $beatInstanceDiscovery->setNamespaceId($namespaceId);
+        $beatInstanceDiscovery->setCluster($cluster);
         $beatInstanceDiscovery->setBeat($beat);
 
         $response = $beatInstanceDiscovery->doRequest();
