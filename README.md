@@ -1,5 +1,9 @@
 # 阿里巴巴nacos配置中心-PHP客户端.
 
+### 更新
+
+1. 查询实例列表支持自定义groupName参数
+
 [Nacos配置中心](https://github.com/alibaba/nacos)的PHP客户端，更多关于Nacos配置中心的介绍，可以查看[Nacos配置中心Wiki](https://github.com/alibaba/nacos/wiki)。
 
 ### 特性
