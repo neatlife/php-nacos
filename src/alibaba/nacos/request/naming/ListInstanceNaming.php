@@ -28,6 +28,12 @@ class ListInstanceNaming extends NamingRequest
     private $clusters;
 
     /**
+     * 分组名
+     * @var
+     */
+    private $groupName;
+
+    /**
      * 是否只返回健康实例
      *
      * @var
@@ -80,6 +86,22 @@ class ListInstanceNaming extends NamingRequest
     public function setClusters($clusters)
     {
         $this->clusters = $clusters;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGroupName()
+    {
+        return $this->groupName;
+    }
+
+    /**
+     * @param mixed $groupName
+     */
+    public function setGroupName($groupName)
+    {
+        $this->groupName = $groupName;
     }
 
     /**

@@ -122,19 +122,17 @@ class NamingClient
      * @param bool $healthyOnly
      * @param string $namespaceId
      * @param string $clusters
+     * @param string $groupName
      * @return model\InstanceList
-     * @throws ReflectionException
-     * @throws RequestUriRequiredException
-     * @throws RequestVerbRequiredException
-     * @throws ResponseCodeErrorException
      */
-    public static function listInstances($serviceName, $healthyOnly = false, $namespaceId = "", $clusters = "")
+    public static function listInstances($serviceName, $healthyOnly = false, $namespaceId = "", $clusters = "", $groupName = "")
     {
         try {
             $listInstanceDiscovery = new ListInstanceNaming();
             $listInstanceDiscovery->setServiceName($serviceName);
             $listInstanceDiscovery->setNamespaceId($namespaceId);
             $listInstanceDiscovery->setClusters($clusters);
+            $listInstanceDiscovery->setGroupName($groupName);
             $listInstanceDiscovery->setHealthyOnly($healthyOnly);
 
             $response = $listInstanceDiscovery->doRequest();
