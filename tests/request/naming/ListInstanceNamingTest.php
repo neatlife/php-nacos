@@ -25,7 +25,7 @@ class RegisterInstanceDiscoveryTest extends TestCase
         $listInstanceDiscovery->setServiceName("nacos.test.1");
         $listInstanceDiscovery->setNamespaceId("");
         $listInstanceDiscovery->setClusters("");
-        $listInstanceDiscovery->setGroupName("DEFAULT_GROUP");
+        $listInstanceDiscovery->setGroupName("");
         $listInstanceDiscovery->setHealthyOnly(false);
 
         $response = $listInstanceDiscovery->doRequest();
