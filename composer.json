@@ -1,6 +1,6 @@
 {
   "name": "bufanyun/nacos",
-  "description": "阿里巴巴nacos配置中心php客户端",
+  "description": "阿里巴巴nacos配置中心php客户端.",
   "type": "library",
   "license": "MIT",
   "authors": [
